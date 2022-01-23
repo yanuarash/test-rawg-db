@@ -32,8 +32,8 @@ class MainViewModel constructor(private val repository: Repository) : ViewModel(
     }
 
     private fun onError(message: String) {
-        errorMsg.value = message
-        loading.value = false
+        loading.postValue(false)
+        errorMsg.postValue(message)
     }
 
     override fun onCleared() {

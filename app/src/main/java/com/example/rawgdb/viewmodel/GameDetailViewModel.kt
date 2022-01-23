@@ -41,8 +41,8 @@ class GameDetailViewModel constructor(private val repository: Repository, privat
     }
 
     private fun onError(message: String) {
-        errorMsg.value = message
-        loading.value = false
+        loading.postValue(false)
+        errorMsg.postValue(message)
     }
 
     override fun onCleared() {

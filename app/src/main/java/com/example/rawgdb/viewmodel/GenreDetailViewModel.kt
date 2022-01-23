@@ -37,8 +37,8 @@ class GenreDetailViewModel constructor(private val repository: Repository, priva
     }
 
     private fun onError(message: String) {
-        errorMsg.value = message
-        loading.value = false
+        loading.postValue(false)
+        errorMsg.postValue(message)
     }
 
     override fun onCleared() {

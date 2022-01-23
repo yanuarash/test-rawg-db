@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         })
         viewmodel.errorMsg.observe(this, {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            binding.content.btnReload.visibility = View.VISIBLE
+            binding.content.progressBar.visibility = View.GONE
+            binding.content.rvList.visibility = View.GONE
         })
         viewmodel.loading.observe(this, {
             if (it) {
@@ -67,5 +70,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewmodel.getGenres(RetrofitService.getKey(), "name", 1, 10)
+
+        binding.content.btnReload.setOnClickListener(View.OnClickListener {
+            binding.content.btnReload.visibility = View.GONE
+            binding.content.progressBar.visibility = View.VISIBLE
+            binding.content.rvList.visibility = View.GONE
+            viewmodel.getGenres(RetrofitService.getKey(), "name", 1, 10)
+        })
     }
 }

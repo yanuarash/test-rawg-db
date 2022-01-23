@@ -58,6 +58,10 @@ class GameDetailActivity : AppCompatActivity() {
         })
         viewmodel.errorMsg.observe(this, {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            binding.btnReload.visibility = View.VISIBLE
+            binding.nestedScrollView.visibility = View.GONE
+            binding.btnBookmark.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
         })
         viewmodel.loading.observe(this, {
             if (it) {
@@ -95,6 +99,14 @@ class GameDetailActivity : AppCompatActivity() {
 
 
         viewmodel.getGameDetail(RetrofitService.getKey(), id)
+
+        binding.btnReload.setOnClickListener(View.OnClickListener {
+            binding.btnReload.visibility = View.GONE
+            binding.nestedScrollView.visibility = View.GONE
+            binding.btnBookmark.visibility = View.GONE
+            binding.progressBar.visibility = View.VISIBLE
+            viewmodel.getGameDetail(RetrofitService.getKey(), id)
+        })
     }
 
     fun addToBookmark(data: Bookmark){
