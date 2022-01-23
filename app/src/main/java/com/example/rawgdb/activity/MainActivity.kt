@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
+
         val actionBar = supportActionBar
         actionBar?.title = getString(R.string.genre)
 

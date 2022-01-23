@@ -22,6 +22,7 @@ class SplashScreenActivity : AppCompatActivity() {
             override fun run() {
                 val intent = Intent(context, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         },2500)
 
